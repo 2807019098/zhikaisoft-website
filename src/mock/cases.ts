@@ -1,0 +1,80 @@
+export interface CaseItem {
+    id: string;
+    title: string;
+    desc: string;
+    image: string;
+    link: string;
+}
+
+export const cases: CaseItem[] = [
+    {
+        id: '1',
+        title: '源东品牌官网',
+        desc: '为源东品牌打造高端企业官网，提升品牌形象。',
+        image: '/mock/case1.jpg',
+        link: 'https://www.by1983.com/case/yuandong',
+    },
+    {
+        id: '2',
+        title: '加藤德官网',
+        desc: '加藤德全球品牌官网，极致交互体验。',
+        image: '/mock/case2.jpg',
+        link: 'https://www.by1983.com/case/jiatengde',
+    },
+    {
+        id: '3',
+        title: '森瑶企业官网',
+        desc: '森瑶企业数字化转型案例，助力业务升级。',
+        image: '/mock/case3.jpg',
+        link: 'https://www.by1983.com/case/senyao',
+    },
+    {
+        id: '4',
+        title: '森瑶企业官网',
+        desc: '森瑶企业数字化转型案例，助力业务升级。',
+        image: '/mock/case3.jpg',
+        link: 'https://www.by1983.com/case/senyao',
+    },
+    {
+        id: '5',
+        title: '森瑶企业官网',
+        desc: '森瑶企业数字化转型案例，助力业务升级。',
+        image: '/mock/case3.jpg',
+        link: 'https://www.by1983.com/case/senyao',
+    },
+    {
+        id: '6',
+        title: '森瑶企业官网',
+        desc: '森瑶企业数字化转型案例，助力业务升级。',
+        image: '/mock/case3.jpg',
+        link: 'https://www.by1983.com/case/senyao',
+    },
+    {
+        id: '7',
+        title: '森瑶企业官网',
+        desc: '森瑶企业数字化转型案例，助力业务升级。',
+        image: '/mock/case3.jpg',
+        link: 'https://www.by1983.com/case/senyao',
+    },
+    {
+        id: '8',
+        title: '森瑶企业官网',
+        desc: '森瑶企业数字化转型案例，助力业务升级。',
+        image: '/mock/case3.jpg',
+        link: 'https://www.by1983.com/case/senyao',
+    },
+    {
+        id: '9',
+        title: '森瑶企业官网',
+        desc: '森瑶企业数字化转型案例，助力业务升级。',
+        image: '/mock/case3.jpg',
+        link: 'https://www.by1983.com/case/senyao',
+    },
+    {
+        id: '10',
+        title: '森瑶企业官网',
+        desc: '森瑶企业数字化转型案例，助力业务升级。',
+        image: '/mock/case3.jpg',
+        link: 'https://www.by1983.com/case/senyao',
+    }
+]; 
