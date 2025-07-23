@@ -35,13 +35,13 @@ function SectionPreview({ title, desc, href, bg }: SectionPreviewProps) {
 
 export default function HomePage() {
   return (
-    <div className="bg-black min-h-screen">
+    <div className="bg-[#f7f7f7] min-h-screen">
       <Header />
-      <main className="pt-20">
+      <main>
         <Hero />
         <SectionPreview
           title="关于我们"
-          desc="智凯软件，专注企业数字化，顶尖团队，创新驱动。"
+          desc="智开软件，专注企业数字化，顶尖团队，创新驱动。"
           href="/about"
           bg="bg-gradient-to-br from-gray-900 via-gray-800 to-cyan-950"
         />

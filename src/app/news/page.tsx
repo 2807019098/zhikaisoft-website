@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Banner from "@/components/Banner";
 
 interface NewsItem {
   id: string;
@@ -38,8 +39,13 @@ export default function NewsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-cyan-50 flex flex-col">
+    <div className="min-h-screen bg-[#f7f7f7] flex flex-col">
       <Header />
+      <Banner
+        title="新闻动态"
+        subtitle="让价值共享 记录企业发展脚步"
+        bgImage="https://picsum.photos/seed/news/1200/320"
+      />
       <main className="flex-1 max-w-6xl mx-auto py-16 px-4">
         <h1 className="text-4xl font-bold text-cyan-700 mb-8">新闻动态</h1>
         <div className="mb-6 flex items-center justify-between">

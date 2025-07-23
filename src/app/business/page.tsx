@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Banner from "@/components/Banner";
 
 interface BusinessItem {
   id: string;
@@ -20,8 +21,13 @@ export default function BusinessPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-cyan-50 flex flex-col">
+    <div className="min-h-screen bg-[#f7f7f7] flex flex-col">
       <Header />
+      <Banner
+        title="业务单元"
+        subtitle="为企业量身打造数字化解决方案，提升核心竞争力"
+        bgImage="https://picsum.photos/seed/business/1200/320"
+      />
       <main className="flex-1 max-w-5xl mx-auto py-16 px-4">
         <h1 className="text-4xl font-bold text-cyan-700 mb-8">业务单元</h1>
         <div className="grid md:grid-cols-2 gap-8">

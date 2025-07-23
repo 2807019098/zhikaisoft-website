@@ -8,7 +8,7 @@ export default function About() {
           关于我们
         </h2>
         <p className="text-lg mb-4">
-          智凯软件（ZKSoft）是一家专注于企业数字化解决方案的软件公司，拥有顶尖的技术团队和丰富的行业经验。我们致力于为客户提供高效、可靠、创新的软件产品和服务，助力企业实现数字化转型和业务升级。
+          智开软件（ZKSoft）是一家专注于企业数字化解决方案的软件公司，拥有顶尖的技术团队和丰富的行业经验。我们致力于为客户提供高效、可靠、创新的软件产品和服务，助力企业实现数字化转型和业务升级。
         </p>
         <ul className="grid md:grid-cols-3 gap-6 mt-8">
           <li className="bg-gray-800 rounded-xl p-6 shadow-lg">

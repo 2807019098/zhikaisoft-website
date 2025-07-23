@@ -9,7 +9,7 @@ export const about: AboutItem[] = [
     {
         id: '1',
         title: '公司简介',
-        desc: '贝聿互动，专注数字创新与品牌升级，致力于为企业提供全链路数字化解决方案。',
+        desc: '智开互动，专注数字创新与品牌升级，致力于为企业提供全链路数字化解决方案。',
         image: '/mock/about1.jpg',
     },
     {

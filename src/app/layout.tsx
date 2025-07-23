@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import PageTransition from "@/components/PageTransition";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,7 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh">
-      <body>{children}</body>
+      <body style={{ minHeight: "100vh" }}>
+        <PageTransition>{children}</PageTransition>
+      </body>
     </html>
   );
 }

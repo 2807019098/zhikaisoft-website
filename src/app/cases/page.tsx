@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Link from "next/link";
+import Banner from "@/components/Banner";
 
 interface CaseItem {
   id: string;
@@ -37,9 +39,14 @@ export default function CasesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-cyan-50 flex flex-col">
+    <div className="min-h-screen bg-[#f7f7f7] flex flex-col">
       <Header />
-      <main className="flex-1 max-w-6xl mx-auto py-16 px-4">
+      <Banner
+        title="案例"
+        subtitle="服务众多知名企业，助力业务升级"
+        bgImage="https://picsum.photos/seed/cases/1200/320"
+      />
+      <main className="flex-1 w-full py-8 px-6 md:max-w-6xl md:mx-auto md:py-16">
         <h1 className="text-4xl font-bold text-cyan-700 mb-8">案例</h1>
         <div className="mb-6 flex items-center justify-between">
           <input
@@ -51,25 +58,28 @@ export default function CasesPage() {
           />
           <span className="text-gray-500 text-sm">共 {total} 条</span>
         </div>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
           {paged.map((item) => (
-            <a
+            <div
               key={item.id}
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block bg-white rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col items-center"
+              className="block bg-white rounded-xl shadow hover:shadow-lg transition p-2 sm:p-4 md:p-6 flex flex-col items-center w-full"
             >
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-32 h-32 object-cover rounded mb-4"
+                className="w-full max-w-[160px] h-32 object-cover rounded mb-4 md:w-32"
               />
               <h2 className="text-xl font-semibold text-cyan-700 mb-2">
                 {item.title}
               </h2>
-              <p className="text-gray-700 text-center">{item.desc}</p>
-            </a>
+              <p className="text-gray-700 text-center mb-4">{item.desc}</p>
+              <Link
+                href={`/cases/${item.id}`}
+                className="mt-auto px-4 py-2 bg-cyan-500 text-white rounded hover:bg-cyan-600 transition"
+              >
+                查看详情
+              </Link>
+            </div>
           ))}
         </div>
         {/* 分页控件 */}
