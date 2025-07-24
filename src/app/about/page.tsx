@@ -1,5 +1,4 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Banner from "@/components/Banner";
@@ -11,15 +10,11 @@ interface AboutItem {
   image: string;
 }
 
-export default function AboutPage() {
-  const [items, setItems] = useState<AboutItem[]>([]);
-
-  useEffect(() => {
-    fetch("/api/about")
-      .then((res) => res.json())
-      .then((data) => setItems(data));
-  }, []);
-
+export default async function AboutPage() {
+  const res = await fetch("http://localhost:3000/api/about", {
+    cache: "no-store",
+  });
+  const items: AboutItem[] = await res.json();
   return (
     <div className="min-h-screen bg-[#f7f7f7] flex flex-col">
       <Header />
@@ -28,13 +23,13 @@ export default function AboutPage() {
         subtitle="创新不是要改变世界，而是不再重复昨天"
         bgImage="https://picsum.photos/seed/about/1200/320"
       />
-      <main className="flex-1 max-w-5xl mx-auto py-16 px-4">
+      <main className="flex-1 max-w-[1200px] mx-auto py-16 px-4">
         <h1 className="text-4xl font-bold text-cyan-700 mb-8">关于智开</h1>
         <div className="grid md:grid-cols-2 gap-8">
           {items.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-xl shadow p-6 flex flex-col items-center"
+              className="bg-white rounded-xl p-6 flex flex-col items-center"
             >
               <img
                 src={item.image}

@@ -1,5 +1,4 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Banner from "@/components/Banner";
@@ -11,15 +10,11 @@ interface ContactItem {
   icon: string;
 }
 
-export default function ContactPage() {
-  const [items, setItems] = useState<ContactItem[]>([]);
-
-  useEffect(() => {
-    fetch("/api/contact")
-      .then((res) => res.json())
-      .then((data) => setItems(data));
-  }, []);
-
+export default async function ContactPage() {
+  const res = await fetch("http://localhost:3000/api/contact", {
+    cache: "no-store",
+  });
+  const items: ContactItem[] = await res.json();
   return (
     <div className="min-h-screen bg-[#f7f7f7] flex flex-col">
       <Header />
@@ -28,13 +23,13 @@ export default function ContactPage() {
         subtitle="欢迎咨询合作，开启数字化新篇章"
         bgImage="https://picsum.photos/seed/contact/1200/320"
       />
-      <main className="flex-1 max-w-5xl mx-auto py-16 px-4">
+      <main className="flex-1 max-w-[1200px] mx-auto py-16 px-4">
         <h1 className="text-4xl font-bold text-cyan-700 mb-8">联系我们</h1>
         <div className="grid md:grid-cols-3 gap-8">
           {items.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-xl shadow p-6 flex flex-col items-center"
+              className="bg-white rounded-xl p-6 flex flex-col items-center"
             >
               <div className="mb-4 text-cyan-500 text-3xl">
                 {item.icon === "location" && <span>📍</span>}

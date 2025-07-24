@@ -17,7 +17,7 @@ export default function Cases() {
           {cases.map((c) => (
             <div
               key={c.name}
-              className="bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-cyan-500/30 transition-shadow duration-300"
+              className="bg-gray-800 rounded-xl p-6 transition-shadow duration-300"
             >
               <h3 className="text-lg font-semibold mb-2 text-cyan-300">
                 {c.name}

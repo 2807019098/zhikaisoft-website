@@ -10,7 +10,7 @@ export default function Contact() {
         <h2 className="text-3xl md:text-4xl font-bold mb-8 text-cyan-400">
           联系我们
         </h2>
-        <form className="bg-gray-800 rounded-xl p-8 shadow-lg space-y-6">
+        <form className="bg-gray-800 rounded-xl p-8 space-y-6">
           <div>
             <label className="block mb-2 text-cyan-300">姓名</label>
             <input

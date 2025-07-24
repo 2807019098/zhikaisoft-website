@@ -1,80 +1,32 @@
+export enum CaseType {
+    H5 = 1,
+    Website = 2,
+    Wechat = 3,
+    App = 4,
+    System = 5
+}
+
 export interface CaseItem {
     id: string;
     title: string;
-    desc: string;
     image: string;
     link: string;
+    type: CaseType;
 }
 
 export const cases: CaseItem[] = [
     {
-        id: '1',
-        title: '源东品牌官网',
-        desc: '为源东品牌打造高端企业官网，提升品牌形象。',
-        image: '/mock/case1.jpg',
-        link: 'https://www.by1983.com/case/yuandong',
+        id: "1",
+        title: "达能—职场小白逆袭记",
+        image: "/images/case/99754aa9-f845-444e-929d-2d0eee1fe7cd.jpg",
+        link: "/cases/1",
+        type: CaseType.H5
     },
     {
-        id: '2',
-        title: '加藤德官网',
-        desc: '加藤德全球品牌官网，极致交互体验。',
-        image: '/mock/case2.jpg',
-        link: 'https://www.by1983.com/case/jiatengde',
-    },
-    {
-        id: '3',
-        title: '森瑶企业官网',
-        desc: '森瑶企业数字化转型案例，助力业务升级。',
-        image: '/mock/case3.jpg',
-        link: 'https://www.by1983.com/case/senyao',
-    },
-    {
-        id: '4',
-        title: '森瑶企业官网',
-        desc: '森瑶企业数字化转型案例，助力业务升级。',
-        image: '/mock/case3.jpg',
-        link: 'https://www.by1983.com/case/senyao',
-    },
-    {
-        id: '5',
-        title: '森瑶企业官网',
-        desc: '森瑶企业数字化转型案例，助力业务升级。',
-        image: '/mock/case3.jpg',
-        link: 'https://www.by1983.com/case/senyao',
-    },
-    {
-        id: '6',
-        title: '森瑶企业官网',
-        desc: '森瑶企业数字化转型案例，助力业务升级。',
-        image: '/mock/case3.jpg',
-        link: 'https://www.by1983.com/case/senyao',
-    },
-    {
-        id: '7',
-        title: '森瑶企业官网',
-        desc: '森瑶企业数字化转型案例，助力业务升级。',
-        image: '/mock/case3.jpg',
-        link: 'https://www.by1983.com/case/senyao',
-    },
-    {
-        id: '8',
-        title: '森瑶企业官网',
-        desc: '森瑶企业数字化转型案例，助力业务升级。',
-        image: '/mock/case3.jpg',
-        link: 'https://www.by1983.com/case/senyao',
-    },
-    {
-        id: '9',
-        title: '森瑶企业官网',
-        desc: '森瑶企业数字化转型案例，助力业务升级。',
-        image: '/mock/case3.jpg',
-        link: 'https://www.by1983.com/case/senyao',
-    },
-    {
-        id: '10',
-        title: '森瑶企业官网',
-        desc: '森瑶企业数字化转型案例，助力业务升级。',
-        image: '/mock/case3.jpg',
-        link: 'https://www.by1983.com/case/senyao',
+        id: "2",
+        title: "麦德龙METRO",
+        image: "/images/case/38aeb9e4-551a-47e2-bb62-cefd0806b715.jpg",
+        link: "/cases/2",
+        type: CaseType.Website
     }
 ]; 

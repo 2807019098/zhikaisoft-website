@@ -32,11 +32,11 @@ export default function Header() {
     setSubmenu(null);
   };
   return (
-    <header className="fixed w-full z-50 bg-white shadow-lg border-b border-gray-100">
-      <nav className="max-w-[1200px] mx-auto flex items-center justify-between px-0 lg:px-0 h-[60px]">
+    <header className="fixed w-full z-50 bg-white border-b border-gray-100">
+      <nav className="max-w-[1200px] mx-auto flex items-center justify-between px-3 sm:px-6 md:px-8 h-[60px]">
         <Link
           href="/"
-          className="text-[22px] font-bold tracking-widest text-[#063771] pl-6 lg:pl-0 select-none"
+          className="text-[22px] font-bold tracking-widest text-[#063771] select-none"
           style={{ letterSpacing: "2px" }}
         >
           ZKSoft
@@ -58,7 +58,7 @@ export default function Header() {
           </div>
           {/* 汉堡按钮 */}
           <button
-            className="lg:hidden text-[#063771] focus:outline-none pr-3"
+            className="lg:hidden text-[#063771] focus:outline-none"
             onClick={() => setOpen((v) => !v)}
             aria-label="菜单"
           >

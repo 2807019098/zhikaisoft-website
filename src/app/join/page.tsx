@@ -34,7 +34,7 @@ export default function JoinPage() {
           {items.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-xl shadow p-6 flex flex-col items-center"
+              className="bg-white rounded-xl p-6 flex flex-col items-center"
             >
               <img
                 src={item.image}

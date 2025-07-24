@@ -11,27 +11,24 @@ export interface CaseDetail {
 export const caseDetails: CaseDetail[] = [
     {
         id: '1',
-        title: '源东品牌官网',
-        summary: '为源东品牌打造高端企业官网，提升品牌形象。',
-        services: ['用户体验', '前端开发', '后台开发', '交互设计', '用户界面设计'],
-        description: '源东品牌官网项目，旨在通过高端定制化设计，全面提升品牌形象，增强用户信任感。项目涵盖品牌故事、产品展示、互动体验等多模块，采用响应式设计，兼容多终端访问。',
-        cover: 'https://picsum.photos/seed/yuandong/1200/400',
+        title: '达能—职场小白逆袭记',
+        summary: '达能—职场小白逆袭记',
+        services: ['用户体验', '移动平台开发', '前端开发', '后台开发', '交互设计', '用户界面设计'],
+        description: '',
+        cover: '/images/banner/a08d1382-0b89-4ea2-9ea6-0ec45c97611a.jpg',
         images: [
-            'https://picsum.photos/seed/yuandong1/600/400',
-            'https://picsum.photos/seed/yuandong2/600/400',
-            'https://picsum.photos/seed/yuandong3/600/400'
+            '/images/detail/6379159746167903666940842.jpg'
         ]
     },
     {
         id: '2',
-        title: '加藤德官网',
-        summary: '加藤德全球品牌官网，极致交互体验。',
+        title: '麦德龙METRO',
+        summary: '麦德龙METRO',
         services: ['移动平台开发', '前端开发', '交互设计', '用户界面设计'],
-        description: '加藤德官网以极致的交互体验为核心，结合品牌调性，打造国际化视觉风格。项目包含品牌介绍、产品中心、新闻动态等板块，提升品牌全球影响力。',
-        cover: 'https://picsum.photos/seed/jiatengde/1200/400',
+        description: '作为全球自助式批发业务的领导者，1996年，麦德龙在上海开设了它在中国的第一家现购自运批发商场，给中国带来了全新的商业理念。麦德龙是中国第一批获得中央政府批准、允许在中国主要城市建立连锁商场的外资商业巨头。',
+        cover: '/images/banner/8106f749-7b94-4ede-9575-2b6633b49720.jpg',
         images: [
-            'https://picsum.photos/seed/jiatengde1/600/400',
-            'https://picsum.photos/seed/jiatengde2/600/400'
+            '/images/detail/6365240301362089975585729.jpg'
         ]
     },
     {

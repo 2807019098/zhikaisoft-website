@@ -1,5 +1,4 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Banner from "@/components/Banner";
@@ -11,15 +10,11 @@ interface MarketingItem {
   image: string;
 }
 
-export default function MarketingPage() {
-  const [items, setItems] = useState<MarketingItem[]>([]);
-
-  useEffect(() => {
-    fetch("/api/marketing")
-      .then((res) => res.json())
-      .then((data) => setItems(data));
-  }, []);
-
+export default async function MarketingPage() {
+  const res = await fetch("http://localhost:3000/api/marketing", {
+    cache: "no-store",
+  });
+  const items: MarketingItem[] = await res.json();
   return (
     <div className="min-h-screen bg-[#f7f7f7] flex flex-col">
       <Header />
@@ -28,13 +23,13 @@ export default function MarketingPage() {
         subtitle="洞悉市场趋势演变 让传播回归社会"
         bgImage="https://picsum.photos/seed/marketing/1200/320"
       />
-      <main className="flex-1 max-w-5xl mx-auto py-16 px-4">
+      <main className="flex-1 max-w-[1200px] mx-auto py-16 px-4">
         <h1 className="text-4xl font-bold text-cyan-700 mb-8">数字营销</h1>
         <div className="grid md:grid-cols-2 gap-8">
           {items.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-xl shadow p-6 flex flex-col items-center"
+              className="bg-white rounded-xl p-6 flex flex-col items-center"
             >
               <img
                 src={item.image}
