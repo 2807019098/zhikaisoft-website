@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState, useMemo, useRef, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
@@ -18,7 +20,6 @@ const CASE_TYPE_LIST = [0, 1, 2, 3, 4, 5];
 interface CaseItem {
   id: string;
   title: string;
-  desc: string;
   image: string;
   link: string;
   type: number;
@@ -34,12 +35,66 @@ const getImgUrl = (path: string) => {
   return prefix + path;
 };
 
-export default async function CasesPage() {
-  const res = await fetch("http://localhost:3000/api/cases", {
-    cache: "no-store",
-  });
-  const cases: CaseItem[] = await res.json();
-  // 默认展示全部案例（如需筛选/分页可用客户端组件实现）
+export default function CasesPage() {
+  const [cases, setCases] = useState<CaseItem[]>([]);
+  const [selectedType, setSelectedType] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  // 获取案例数据
+  useEffect(() => {
+    const fetchCases = async () => {
+      const res = await fetch("http://localhost:3000/api/cases", {
+        cache: "no-store",
+      });
+      const data = await res.json();
+      setCases(data);
+    };
+    fetchCases();
+  }, []);
+
+  // 根据选中的类型筛选案例
+  const filteredCases = useMemo(() => {
+    if (selectedType === 0) {
+      return cases;
+    }
+    return cases.filter(item => item.type === selectedType);
+  }, [cases, selectedType]);
+
+  // 计算分页
+  const totalPages = Math.ceil(filteredCases.length / PAGE_SIZE);
+  const startIndex = (currentPage - 1) * PAGE_SIZE;
+  const endIndex = startIndex + PAGE_SIZE;
+  const currentCases = filteredCases.slice(startIndex, endIndex);
+
+  // 处理类型切换
+  const handleTypeChange = (type: number) => {
+    setSelectedType(type);
+    setCurrentPage(1); // 重置到第一页
+    
+    // 移动端自动滚动到选中的tab
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const button = container.querySelector(`[data-type="${type}"]`) as HTMLElement;
+      if (button) {
+        const containerWidth = container.offsetWidth;
+        const buttonLeft = button.offsetLeft;
+        const buttonWidth = button.offsetWidth;
+        const scrollLeft = buttonLeft - (containerWidth / 2) + (buttonWidth / 2);
+        
+        container.scrollTo({
+          left: scrollLeft,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };
+
+  // 处理分页
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
   return (
     <div className="min-h-screen bg-[#f7f7f7] flex flex-col">
       <Header />
@@ -49,8 +104,36 @@ export default async function CasesPage() {
         bgImage="https://picsum.photos/seed/cases/1200/320"
       />
       <main className="flex-1 w-full max-w-[1200px] mx-auto py-8 px-3 sm:px-6 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
-          {cases.map((item) => (
+        {/* Tab切换 - 移动端支持滑动 */}
+        <div className="mb-8">
+          <div 
+            ref={scrollContainerRef}
+            className="flex gap-2 overflow-x-auto scrollbar-hide pb-2"
+            style={{
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none'
+            }}
+          >
+            {CASE_TYPE_LIST.map((type) => (
+              <button
+                key={type}
+                data-type={type}
+                onClick={() => handleTypeChange(type)}
+                className={`px-6 py-3 rounded-[3px] text-[15px] font-medium transition-all duration-300 whitespace-nowrap flex-shrink-0 ${
+                  selectedType === type
+                    ? "bg-[#0b5fa5] text-white"
+                    : "bg-white text-[#666] hover:bg-[#f5f5f5]"
+                }`}
+              >
+                {CASE_TYPE_MAP[type]}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* 案例列表 */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mb-8">
+          {currentCases.map((item) => (
             <Link
               key={item.id}
               href={item.link}
@@ -93,8 +176,52 @@ export default async function CasesPage() {
             </Link>
           ))}
         </div>
+
         {/* 分页控件 */}
-        {/* totalPages and pagination logic removed as per edit hint */}
+        {totalPages > 1 && (
+          <div className="flex justify-center items-center gap-2">
+            {/* 上一页 */}
+            <button
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+              className={`px-3 py-2 rounded-[3px] text-[14px] font-medium transition-all duration-300 ${
+                currentPage === 1
+                  ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                  : "bg-white text-[#666] hover:bg-[#f5f5f5]"
+              }`}
+            >
+              上一页
+            </button>
+
+            {/* 页码 */}
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                onClick={() => handlePageChange(page)}
+                className={`px-3 py-2 rounded-[3px] text-[14px] font-medium transition-all duration-300 ${
+                  currentPage === page
+                    ? "bg-[#0b5fa5] text-white"
+                    : "bg-white text-[#666] hover:bg-[#f5f5f5]"
+                }`}
+              >
+                {page}
+              </button>
+            ))}
+
+            {/* 下一页 */}
+            <button
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className={`px-3 py-2 rounded-[3px] text-[14px] font-medium transition-all duration-300 ${
+                currentPage === totalPages
+                  ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                  : "bg-white text-[#666] hover:bg-[#f5f5f5]"
+              }`}
+            >
+              下一页
+            </button>
+          </div>
+        )}
       </main>
       <Footer />
     </div>
