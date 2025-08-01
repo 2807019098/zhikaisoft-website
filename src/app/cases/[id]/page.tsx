@@ -66,8 +66,8 @@ export default async function CaseDetail({ params }: CaseDetailProps) {
       </main>
       {/* 下方大图区 */}
       {detail.images && detail.images.length > 0 && (
-        <section className="bg-[#f7f7f7] py-12 w-full">
-          <div className="max-w-[1200px] mx-auto flex flex-col gap-8 px-3 sm:px-6 md:px-8 w-full">
+        <section className="bg-[#f7f7f7] w-full">
+          <div className="max-w-[1200px] mx-auto flex flex-col w-full">
             {detail.images.map((img, idx) => (
               <div
                 key={img}

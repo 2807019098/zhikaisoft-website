@@ -5,25 +5,38 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import Banner from "@/components/Banner";
+import { cases, CaseType, TechTag, type CaseItem } from "@/mock/cases";
 
 // 新增类型枚举
 const CASE_TYPE_MAP: { [key: number]: string } = {
   0: "全部",
-  1: "H5",
-  2: "网站建设",
-  3: "微信开发",
-  4: "APP开发",
-  5: "系统开发",
+  [CaseType.Website]: "网站建设",
+  [CaseType.Ecommerce]: "电商平台",
+  [CaseType.BackendSystem]: "后台管理系统",
+  [CaseType.MobileApp]: "移动端应用",
+  [CaseType.DataVisualization]: "数据可视化",
+  [CaseType.Other]: "其他",
 };
-const CASE_TYPE_LIST = [0, 1, 2, 3, 4, 5];
 
-interface CaseItem {
-  id: string;
-  title: string;
-  image: string;
-  link: string;
-  type: number;
-}
+const TECH_TAG_MAP: { [key: number]: string } = {
+  [TechTag.Frontend]: "Web前端",
+  [TechTag.SystemDev]: "系统开发",
+  [TechTag.DesktopApp]: "窗体应用",
+  [TechTag.MiniProgram]: "小程序开发",
+  [TechTag.NativeApp]: "原生App",
+  [TechTag.HybridApp]: "混合App",
+  [TechTag.ApiDev]: "接口开发",
+};
+
+const CASE_TYPE_LIST = [
+  0,
+  CaseType.Website,
+  CaseType.Ecommerce,
+  CaseType.BackendSystem,
+  CaseType.MobileApp,
+  CaseType.DataVisualization,
+  CaseType.Other,
+];
 
 const PAGE_SIZE = 9;
 
@@ -36,30 +49,17 @@ const getImgUrl = (path: string) => {
 };
 
 export default function CasesPage() {
-  const [cases, setCases] = useState<CaseItem[]>([]);
   const [selectedType, setSelectedType] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  // 获取案例数据
-  useEffect(() => {
-    const fetchCases = async () => {
-      const res = await fetch("http://localhost:3000/api/cases", {
-        cache: "no-store",
-      });
-      const data = await res.json();
-      setCases(data);
-    };
-    fetchCases();
-  }, []);
 
   // 根据选中的类型筛选案例
   const filteredCases = useMemo(() => {
     if (selectedType === 0) {
       return cases;
     }
-    return cases.filter(item => item.type === selectedType);
-  }, [cases, selectedType]);
+    return cases.filter((item) => item.type === selectedType);
+  }, [selectedType]);
 
   // 计算分页
   const totalPages = Math.ceil(filteredCases.length / PAGE_SIZE);
@@ -71,20 +71,22 @@ export default function CasesPage() {
   const handleTypeChange = (type: number) => {
     setSelectedType(type);
     setCurrentPage(1); // 重置到第一页
-    
+
     // 移动端自动滚动到选中的tab
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const button = container.querySelector(`[data-type="${type}"]`) as HTMLElement;
+      const button = container.querySelector(
+        `[data-type="${type}"]`
+      ) as HTMLElement;
       if (button) {
         const containerWidth = container.offsetWidth;
         const buttonLeft = button.offsetLeft;
         const buttonWidth = button.offsetWidth;
-        const scrollLeft = buttonLeft - (containerWidth / 2) + (buttonWidth / 2);
-        
+        const scrollLeft = buttonLeft - containerWidth / 2 + buttonWidth / 2;
+
         container.scrollTo({
           left: scrollLeft,
-          behavior: 'smooth'
+          behavior: "smooth",
         });
       }
     }
@@ -95,6 +97,11 @@ export default function CasesPage() {
     setCurrentPage(page);
   };
 
+  // 获取技术标签显示文本
+  const getTechTagsText = (tags: TechTag[]) => {
+    return tags.map((tag) => TECH_TAG_MAP[tag]).join("、");
+  };
+
   return (
     <div className="min-h-screen bg-[#f7f7f7] flex flex-col">
       <Header />
@@ -102,16 +109,17 @@ export default function CasesPage() {
         title="案例"
         subtitle="服务众多知名企业，助力业务升级"
         bgImage="https://picsum.photos/seed/cases/1200/320"
+        breadcrumbs={[{ name: "首页", href: "/" }, { name: "案例" }]}
       />
       <main className="flex-1 w-full max-w-[1200px] mx-auto py-8 px-3 sm:px-6 md:px-8">
         {/* Tab切换 - 移动端支持滑动 */}
         <div className="mb-8">
-          <div 
+          <div
             ref={scrollContainerRef}
             className="flex gap-2 overflow-x-auto scrollbar-hide pb-2"
             style={{
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none'
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
             }}
           >
             {CASE_TYPE_LIST.map((type) => (
@@ -119,7 +127,7 @@ export default function CasesPage() {
                 key={type}
                 data-type={type}
                 onClick={() => handleTypeChange(type)}
-                className={`px-6 py-3 rounded-[3px] text-[15px] font-medium transition-all duration-300 whitespace-nowrap flex-shrink-0 ${
+                className={`px-6 py-3 cursor-pointer rounded-[3px] text-[15px] font-medium transition-all duration-300 whitespace-nowrap flex-shrink-0 ${
                   selectedType === type
                     ? "bg-[#0b5fa5] text-white"
                     : "bg-white text-[#666] hover:bg-[#f5f5f5]"
@@ -157,7 +165,7 @@ export default function CasesPage() {
                   {item.title}
                 </h2>
                 <p className="text-[14px] text-[#888] font-normal leading-[1.7] w-full text-left mb-5">
-                  {CASE_TYPE_MAP[item.type]}
+                  {CASE_TYPE_MAP[item.type]} · {getTechTagsText(item.tags)}
                 </p>
                 {/* 分割线 */}
                 <div className="w-full h-px bg-[#eee] mt-2 mb-0" />
@@ -184,7 +192,7 @@ export default function CasesPage() {
             <button
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
-              className={`px-3 py-2 rounded-[3px] text-[14px] font-medium transition-all duration-300 ${
+              className={`px-3 py-2 cursor-pointer rounded-[3px] text-[14px] font-medium transition-all duration-300 ${
                 currentPage === 1
                   ? "bg-gray-200 text-gray-400 cursor-not-allowed"
                   : "bg-white text-[#666] hover:bg-[#f5f5f5]"
@@ -198,7 +206,7 @@ export default function CasesPage() {
               <button
                 key={page}
                 onClick={() => handlePageChange(page)}
-                className={`px-3 py-2 rounded-[3px] text-[14px] font-medium transition-all duration-300 ${
+                className={`px-3 py-2 cursor-pointer rounded-[3px] text-[14px] font-medium transition-all duration-300 ${
                   currentPage === page
                     ? "bg-[#0b5fa5] text-white"
                     : "bg-white text-[#666] hover:bg-[#f5f5f5]"
@@ -212,7 +220,7 @@ export default function CasesPage() {
             <button
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
-              className={`px-3 py-2 rounded-[3px] text-[14px] font-medium transition-all duration-300 ${
+              className={`px-3 py-2 cursor-pointer rounded-[3px] text-[14px] font-medium transition-all duration-300 ${
                 currentPage === totalPages
                   ? "bg-gray-200 text-gray-400 cursor-not-allowed"
                   : "bg-white text-[#666] hover:bg-[#f5f5f5]"

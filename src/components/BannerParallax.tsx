@@ -30,7 +30,7 @@ export default function BannerParallax({
   return (
     <div
       ref={bannerRef}
-      className="relative w-screen h-[200px] md:h-[480px] flex items-end left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]"
+      className="relative w-screen h-[700px] md:h-[800px] flex items-end left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]"
       style={{
         background: `url(${getImgUrl(cover)}) center/cover no-repeat`,
         backgroundPosition: "center 0px",
