@@ -23,7 +23,7 @@ export default async function AboutPage() {
         subtitle="创新不是要改变世界，而是不再重复昨天"
         bgImage="https://picsum.photos/seed/about/1200/320"
       />
-      <main className="flex-1 max-w-[1200px] mx-auto py-16 px-4">
+      <main className="flex-1 w-full max-w-[95%] lg:max-w-[90%] xl:max-w-[85%] mx-auto py-16 px-4">
         <h1 className="text-4xl font-bold text-cyan-700 mb-8">关于智开</h1>
         <div className="grid md:grid-cols-2 gap-8">
           {items.map((item) => (

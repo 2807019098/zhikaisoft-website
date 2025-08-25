@@ -27,7 +27,7 @@ export default function InteractivePage() {
         subtitle="专注企业个性化定制开发 以实力为专业注解"
         bgImage="https://picsum.photos/seed/interactive/1200/320"
       />
-      <div className="w-full max-w-[1200px] mx-auto flex flex-col items-center">
+      <div className="w-full max-w-[95%] lg:max-w-[90%] xl:max-w-[85%] mx-auto flex flex-col items-center">
         {/* 仅PC端显示二级菜单，移动端隐藏 */}
         <div className="hidden md:block w-full">
           <InteractiveSubMenu active="" />

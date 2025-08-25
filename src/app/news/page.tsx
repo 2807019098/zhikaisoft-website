@@ -28,7 +28,7 @@ export default async function NewsPage() {
         subtitle="让价值共享 记录企业发展脚步"
         bgImage="https://picsum.photos/seed/news/1200/320"
       />
-      <main className="flex-1 max-w-[1200px] mx-auto py-16 px-4">
+      <main className="flex-1 w-full max-w-[95%] lg:max-w-[90%] xl:max-w-[85%] mx-auto py-16 px-4">
         <h1 className="text-4xl font-bold text-cyan-700 mb-8">新闻动态</h1>
         <div className="grid md:grid-cols-3 gap-8">
           {news.map((item) => (

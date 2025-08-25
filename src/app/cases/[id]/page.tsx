@@ -31,7 +31,7 @@ export default async function CaseDetail({ params }: CaseDetailProps) {
         />
       </div>
       {/* 中间内容区 */}
-      <main className="flex-1 max-w-[1200px] mx-auto bg-white rounded-[3px] p-0 mt-12 mb-12 w-full">
+      <main className="flex-1 w-full max-w-[95%] lg:max-w-[90%] xl:max-w-[85%] mx-auto bg-white rounded-[3px] p-0 mt-12 mb-12">
         <section className="flex flex-col md:flex-row gap-12 px-3 sm:px-6 md:px-8 pt-10 pb-10">
           {/* 左侧简介 */}
           <div className="flex-1 min-w-0">
@@ -67,7 +67,7 @@ export default async function CaseDetail({ params }: CaseDetailProps) {
       {/* 下方大图区 */}
       {detail.images && detail.images.length > 0 && (
         <section className="bg-[#f7f7f7] w-full">
-          <div className="max-w-[1200px] mx-auto flex flex-col w-full">
+          <div className="max-w-[95%] lg:max-w-[90%] xl:max-w-[85%] mx-auto flex flex-col w-full">
             {detail.images.map((img, idx) => (
               <div
                 key={img}

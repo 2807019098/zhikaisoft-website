@@ -3,7 +3,7 @@ import React from "react";
 export default function About() {
   return (
     <section id="about" className="py-20 bg-gray-900 text-white">
-      <div className="max-w-5xl mx-auto px-4">
+      <div className="max-w-[95%] lg:max-w-[90%] xl:max-w-[85%] mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold mb-6 text-cyan-400">
           关于我们
         </h2>

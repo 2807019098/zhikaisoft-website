@@ -111,7 +111,7 @@ export default function CasesPage() {
         bgImage="https://picsum.photos/seed/cases/1200/320"
         breadcrumbs={[{ name: "首页", href: "/" }, { name: "案例" }]}
       />
-      <main className="flex-1 w-full max-w-[1200px] mx-auto py-8 px-3 sm:px-6 md:px-8">
+      <main className="flex-1 w-full max-w-[95%] lg:max-w-[90%] xl:max-w-[85%] mx-auto py-8 px-3 sm:px-6 md:px-8">
         {/* Tab切换 - 移动端支持滑动 */}
         <div className="mb-8">
           <div
@@ -140,7 +140,7 @@ export default function CasesPage() {
         </div>
 
         {/* 案例列表 */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-8 mb-8">
           {currentCases.map((item) => (
             <Link
               key={item.id}

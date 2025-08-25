@@ -23,7 +23,7 @@ export default async function MarketingPage() {
         subtitle="洞悉市场趋势演变 让传播回归社会"
         bgImage="https://picsum.photos/seed/marketing/1200/320"
       />
-      <main className="flex-1 max-w-[1200px] mx-auto py-16 px-4">
+      <main className="flex-1 w-full max-w-[95%] lg:max-w-[90%] xl:max-w-[85%] mx-auto py-16 px-4">
         <h1 className="text-4xl font-bold text-cyan-700 mb-8">数字营销</h1>
         <div className="grid md:grid-cols-2 gap-8">
           {items.map((item) => (

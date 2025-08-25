@@ -6,7 +6,7 @@ export default function AppPage() {
     <div className="bg-[#f7f7f7] min-h-screen">
       <Header />
       <div className="pt-[72px] pb-10">
-        <div className="max-w-5xl mx-auto">
+        <div className="w-full max-w-[95%] lg:max-w-[90%] xl:max-w-[85%] mx-auto">
           <h1 className="text-3xl md:text-4xl font-bold text-[#063771] text-center pt-12 mb-6 tracking-wide">
             APP开发
           </h1>

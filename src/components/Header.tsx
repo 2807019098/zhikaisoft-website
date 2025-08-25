@@ -33,7 +33,7 @@ export default function Header() {
   };
   return (
     <header className="fixed w-full z-50 bg-white border-b border-gray-100">
-      <nav className="max-w-[1200px] mx-auto flex items-center justify-between px-3 sm:px-6 md:px-8 h-[60px]">
+      <nav className="w-full max-w-[95%] lg:max-w-[90%] xl:max-w-[85%] mx-auto flex items-center justify-between px-3 sm:px-6 md:px-8 h-[60px]">
         <Link
           href="/"
           className="text-[22px] font-bold tracking-widest text-[#063771] select-none"

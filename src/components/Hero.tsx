@@ -6,6 +6,7 @@ import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
+import { getImgUrl } from "@/utils/getImgUrl";
 
 export default function Hero() {
   return (
@@ -22,14 +23,14 @@ export default function Hero() {
           <SwiperSlide key={slide.img}>
             <div className="absolute inset-0 w-full h-full">
               <img
-                src={slide.img}
+                src={getImgUrl(slide.img)}
                 alt={slide.title}
                 className="w-full h-full object-cover object-center select-none pointer-events-none"
                 draggable={false}
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/70" />
+              <div className="absolute inset-0 bg-gradient-to-b" />
             </div>
-            <div className="relative z-10 w-full max-w-4xl mx-auto px-4 flex flex-col items-center justify-center text-center min-h-[320px] md:min-h-[480px] lg:min-h-[600px]">
+            <div className="relative z-10 w-full max-w-[95%] lg:max-w-[90%] xl:max-w-[85%] mx-auto px-4 flex flex-col items-center justify-center text-center min-h-[320px] md:min-h-[480px] lg:min-h-[600px]">
               <h1 className="text-2xl md:text-5xl font-extrabold mb-4 text-white drop-shadow-lg">
                 {slide.title}
               </h1>
