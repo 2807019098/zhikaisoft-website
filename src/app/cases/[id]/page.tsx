@@ -31,10 +31,10 @@ export default async function CaseDetail({ params }: CaseDetailProps) {
         />
       </div>
       {/* 中间内容区 */}
-      <main className="flex-1 w-full max-w-[95%] lg:max-w-[90%] xl:max-w-[85%] mx-auto bg-white rounded-[3px] p-0 mt-12 mb-12">
-        <section className="flex flex-col md:flex-row gap-12 px-3 sm:px-6 md:px-8 pt-10 pb-10">
+      <main className="flex-1 w-full md:max-w-[90%] lg:max-w-[85%] xl:max-w-[80%] mx-auto bg-white rounded-[3px] p-0 mt-12 mb-12 bg-white">
+        <section className="flex flex-col md:flex-row">
           {/* 左侧简介 */}
-          <div className="flex-1 min-w-0">
+          <div className="flex-1 min-w-0 py-10 sm:py-18 md:py-24 lg:py-30 px-6 sm:px-10 md:px-16 lg:px-20">
             <h2 className="text-2xl font-bold text-[#222] mb-2">项目简介</h2>
             <div className="w-12 h-1 bg-[#0b5fa5] rounded mb-6" />
             <div className="text-lg text-[#666] leading-7 mb-6">
@@ -46,8 +46,8 @@ export default async function CaseDetail({ params }: CaseDetailProps) {
           </div>
           {/* 右侧Service区 */}
           {detail.services && detail.services.length > 0 && (
-            <div className="w-full md:w-[45%] flex-shrink-0 md:pl-8 md:border-l md:border-[#eee] mt-8 md:mt-0">
-              <h3 className="text-lg font-semibold text-[#222] mb-3">
+            <div className="w-full md:w-[50%] flex-shrink-0 bg-[#eee] md:mt-0 py-10 sm:py-18 md:py-24 lg:py-30 px-6 sm:px-10 md:px-16 lg:px-30">
+              <h3 className="text-lg font-semibold text-[#222] mb-3 text-[24px]">
                 服务内容
               </h3>
               <ul className="space-y-2">
@@ -67,7 +67,7 @@ export default async function CaseDetail({ params }: CaseDetailProps) {
       {/* 下方大图区 */}
       {detail.images && detail.images.length > 0 && (
         <section className="bg-[#f7f7f7] w-full">
-          <div className="max-w-[95%] lg:max-w-[90%] xl:max-w-[85%] mx-auto flex flex-col w-full">
+          <div className="w-full md:max-w-[90%] lg:max-w-[85%] xl:max-w-[80%] mx-auto flex flex-col w-full">
             {detail.images.map((img, idx) => (
               <div
                 key={img}

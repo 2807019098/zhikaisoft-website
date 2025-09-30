@@ -30,14 +30,16 @@ export default function BannerParallax({
   return (
     <div
       ref={bannerRef}
-      className="relative w-screen h-[700px] md:h-[800px] flex items-end left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]"
+      className="relative w-screen h-[700px] md:h-[800px] lg:h-[1000px] xl:h-[1200px] flex items-end left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]"
       style={{
-        background: `url(${getImgUrl(cover)}) center/cover no-repeat`,
-        backgroundPosition: "center 0px",
-        transition: "background-position 0.2s",
+        backgroundImage: `url(${getImgUrl(cover)})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center 0px',
+        transition: 'background-position 0.2s',
       }}
     >
-      <div className="absolute inset-0 bg-black/30" />
+      <div className="absolute inset-0 bg-black/10" />
       <div className="relative z-10 flex items-center gap-2 text-white text-sm md:text-base px-6 pb-6 select-none">
         {breadcrumbs.map((bc, i) =>
           bc.href ? (

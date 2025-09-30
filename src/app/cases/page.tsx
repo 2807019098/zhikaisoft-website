@@ -111,7 +111,7 @@ export default function CasesPage() {
         bgImage="https://picsum.photos/seed/cases/1200/320"
         breadcrumbs={[{ name: "首页", href: "/" }, { name: "案例" }]}
       />
-      <main className="flex-1 w-full max-w-[95%] lg:max-w-[90%] xl:max-w-[85%] mx-auto py-8 px-3 sm:px-6 md:px-8">
+      <main className="flex-1 w-full md:max-w-[90%] lg:max-w-[85%] xl:max-w-[80%] mx-auto py-8 px-3 sm:px-6 md:px-8 bg-white">
         {/* Tab切换 - 移动端支持滑动 */}
         <div className="mb-8">
           <div

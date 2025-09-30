@@ -23,7 +23,7 @@ export default async function BusinessPage() {
         subtitle="为企业量身打造数字化解决方案，提升核心竞争力"
         bgImage="https://picsum.photos/seed/business/1200/320"
       />
-      <main className="flex-1 w-full max-w-[95%] lg:max-w-[90%] xl:max-w-[85%] mx-auto py-16 px-4">
+      <main className="flex-1 w-full md:max-w-[90%] lg:max-w-[85%] xl:max-w-[80%] mx-auto py-16 px-3 sm:px-6 md:px-8 bg-white">
         <h1 className="text-4xl font-bold text-cyan-700 mb-8">业务单元</h1>
         <div className="grid md:grid-cols-2 gap-8">
           {items.map((item) => (
